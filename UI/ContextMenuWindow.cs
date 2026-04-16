@@ -51,7 +51,7 @@ internal class ContextMenuWindow
     #region Private Fields
 
     private readonly Window window;
-    private bool ShowContextMenu => (window.Content as ItemsControl).Items.Count > 0;
+    private bool ShowContextMenu => (window.Content as MenuFlyoutPresenter).Items.Count > 0;
 
     #endregion
 
@@ -72,12 +72,14 @@ internal class ContextMenuWindow
         window = new Window();
 
         // Root container (acts like a vertical menu list)
-        window.Content = new ItemsControl()
+        var presenter = new MenuFlyoutPresenter()
         {
-            IsTabStop = false,
             MinWidth = 125,
-            Margin = new Thickness(4)
+            Margin = new Thickness(0),
+            Padding = new Thickness(0, 4, 0, 4)
         };
+
+        window.Content = presenter;
 
         var hWnd = GetHwnd();
 
@@ -118,7 +120,7 @@ internal class ContextMenuWindow
         // DPI scaling
         var scale = GetDpiForWindow(hWnd) / 96f;
 
-        if (window.Content is not FrameworkElement root)
+        if (window.Content is not MenuFlyoutPresenter root)
             return;
 
         // Measure content to determine size
@@ -172,16 +174,13 @@ internal class ContextMenuWindow
     /// <summary>
     /// Adds a clickable menu item.
     /// </summary>
-    internal MenuFlyoutItem? AddItem(string Text, IconElement Icon = null )
+    internal MenuFlyoutItem? AddItem(string Text )
     {
         var item = new MenuFlyoutItem
         {
             Padding = new Thickness(12, 6, 12, 6),
             Text = Text
         };
-
-        if (Icon != null)
-            item.Icon = Icon;
 
         AddItem(item);
         return item;

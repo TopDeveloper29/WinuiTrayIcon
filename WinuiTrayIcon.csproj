@@ -1,21 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>WinuiTrayIcon</RootNamespace>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
     <WinUISDKReferences>false</WinUISDKReferences>
-    <AssemblyVersion>26.4.15.54</AssemblyVersion>
-    <FileVersion>26.4.15.54</FileVersion>
+    <AssemblyVersion>26.4.16.11</AssemblyVersion>
+    <FileVersion>26.4.16.11</FileVersion>
     <Title>WinuiTrayIcon</Title>
     <Company>HBDV</Company>
     <PackageTags>WinUI</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>A small library that allow you to add a system tray icon to WinUI 3 applications.</Description>
+    <Copyright>HBDV</Copyright>
+    <PackageProjectUrl>https://github.com/TopDeveloper29/WinuiTrayIcon</PackageProjectUrl>
+    <PackageIcon></PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/TopDeveloper29/WinuiTrayIcon</RepositoryUrl>
+    <Version>$(AssemblyVersion)</Version>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1721" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260317003" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
   
 </Project>

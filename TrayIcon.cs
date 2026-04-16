@@ -16,7 +16,7 @@ namespace WinuiTrayIcon;
 /// - Left/right click behavior
 /// - Context menu display
 /// </summary>
-public class WinuiTrayIcon : IDisposable
+public class TrayIcon : IDisposable
 {
     #region Events
 
@@ -91,7 +91,7 @@ public class WinuiTrayIcon : IDisposable
     /// </summary>
     /// <param name="hwnd">Owner window handle</param>
     /// <param name="iconPath">Optional .ico file path</param>
-    public WinuiTrayIcon(nint hwnd, string? iconPath = null)
+    public TrayIcon(nint hwnd, string? iconPath = null)
     {
         // Create tray icon
         systemTrayIcon = new SystemTrayIcon(hwnd)
@@ -130,7 +130,7 @@ public class WinuiTrayIcon : IDisposable
     public void AddMenuItem(MenuFlyoutItemBase Item) => contextMenuWindow?.AddItem(Item);
 
     public void AddMenuItem(MenuFlyoutItem Item) => contextMenuWindow?.AddItem(Item);
-    public MenuFlyoutItem? AddMenuItem(string Text, IconElement? Icon = null) => contextMenuWindow?.AddItem(Text, Icon);
+    public MenuFlyoutItem? AddMenuItem(string Text) => contextMenuWindow?.AddItem(Text);
 
     public void AddMenuSeparator() => contextMenuWindow?.AddSeparator();
     
